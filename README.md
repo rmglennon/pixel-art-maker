@@ -4,6 +4,8 @@ Use this web app make pixel-style artwork. Set the height and width of the grid 
 
 Then, choose a color and click a cell in the grid to fill it in with that hue. Use the palette to change the color as many times you want to create patterns and designs in the grid.
 
+Try it at https://rmglennon.github.io/pixel-art-maker/.
+
 ![Example artwork](example-art-screenshot.png)
 
 ## Technology
