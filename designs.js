@@ -13,27 +13,19 @@ $( "#submitSize" ).on("click", function() {
 
 
 function makeGrid(height, width, color) {
-  // var $tr = $("<tr>");
-  // var $td = $("<td>");
-  var $table = $("#pixelCanvas");
-  console.log(height, width, color);
-
-  for (var i = 0; i <= height; i++) {
-    console.log("i ", i);
-    var $tr = $("<tr>");
-    var $td = $("<td>");
-    $tr.append($td);
-    $td.css("background", color);
-    $table.append($tr);
-
-    for (var j = 0; j <= width; j++) {
-        var $tr2 = $("<tr>");
-        var $td2 = $("<td>");
-          $tr2.append($td2);
-          console.log("j ", j);
-              $table.append($tr2);
-    }
+  
+var $table = $("#pixelCanvas");
+  
+  for (var i = 1; i <= height; i++) {
+    
+    $table.append("<tr></tr>"); 
+    
+    for (var j = 1; j <= width; j++) {
+      console.log("width j ", j);
+      $("tr:last").append("<td></td>");
+      $("td").attr("class", "box");
+    }  
   }
-
-
 }
+
+  //$("td").css("background", color);  
