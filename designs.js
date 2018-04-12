@@ -1,31 +1,38 @@
-// Select color input
-// Select size input
-
-// When size is submitted by the user, call makeGrid()
-
-$( "#submitSize" ).on("click", function() {
-  event.preventDefault();
-  var $gridHeight = $("#inputHeight").val().trim();
-  var $gridWidth = $("#inputWidth").val().trim();
-  var $color = $("#colorPicker").val();
-  makeGrid($gridHeight, $gridWidth, $color);
-});
-
-
-function makeGrid(height, width, color) {
+$(document).ready(function() {
   
-var $table = $("#pixelCanvas");
+  // capture the size values from the input box when submit is clicked
+  $("#submitSize").on("click", function() {
+    event.preventDefault();
+    $("table").empty();
+    var $gridHeight = $("#inputHeight").val().trim();
+    var $gridWidth = $("#inputWidth").val().trim();
+    
+    // pass the height and width to a function to make the grid
+    makeGrid($gridHeight, $gridWidth);
+  });
   
-  for (var i = 1; i <= height; i++) {
+  // create the grid as a table using the height and width
+  function makeGrid(height, width) {
     
-    $table.append("<tr></tr>"); 
+    var $table = $("#pixelCanvas");
     
-    for (var j = 1; j <= width; j++) {
-      console.log("width j ", j);
-      $("tr:last").append("<td></td>");
-      $("td").attr("class", "box");
-    }  
+    for (var i = 1; i <= height; i++) {
+      $table.append("<tr></tr>"); 
+      
+      for (var j = 1; j <= width; j++) {
+        $("tr:last").append("<td></td>");
+        $("td").addClass("grid-box");
+      }  
+      
+    }
   }
-}
-
-  //$("td").css("background", color);  
+  
+  // use event delegation to capture the click event 
+  // set the color to the value of the color
+  $("table").on("click", ".grid-box", function() {
+    var $color = $("#colorPicker").val();
+    console.log("box was clicked");
+    $(this).css("background", $color);
+  })
+  
+})
